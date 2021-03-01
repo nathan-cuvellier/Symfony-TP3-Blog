@@ -22,6 +22,7 @@ class PostCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            TextField::new('title'),
             TextEditorField::new('content'),
             BooleanField::new('isPublished'),
             BooleanField::new('isDeleted'),

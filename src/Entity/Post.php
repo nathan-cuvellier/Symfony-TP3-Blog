@@ -50,6 +50,11 @@ class Post
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $title;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -86,7 +91,7 @@ class Post
 
     public function __toString(): string
     {
-        return $this->getId();
+        return $this->getTitle();
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
@@ -151,6 +156,18 @@ class Post
                 $comment->setPost(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
 
         return $this;
     }
