@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+    <div class="container-post">
+        <div class="post">
+            <h1>New Articles</h1>
+            <div>
+                {% for post in posts %}
+                    <article class="post-preview" onclick="location='{{ path('post', {id: post.id}) }}'">
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.content | striptags | slice(0, 300) }}...</p>
+                    </article>
+                {% endfor %}
+            </div>
+
+        </div>
+        <div class="info">
+            {% include 'post/sidebar_user.html.twig' %}
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -16,7 +16,7 @@ class DashboardController extends AbstractDashboardController
     #[Route("/admin", name: "admin")]
     public function index(): Response
     {
-        return parent::index();
+        return $this->render('@EasyAdmin/page/content.html.twig');
     }
 
     public function configureDashboard(): Dashboard
@@ -27,7 +27,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
+        //yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Post', 'fa fa-file-text', Post::class)
             ->setDefaultSort(['createdAt' => 'DESC']);
         yield MenuItem::linkToCrud('Comments', 'fa fa-comment', Comment::class)

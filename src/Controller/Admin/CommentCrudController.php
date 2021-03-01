@@ -29,11 +29,11 @@ class CommentCrudController extends AbstractCrudController
     }
 
 
-    public function createEntity(string $entityFqcn)
+    public function createEntity(string $entityFqcn): Comment
     {
-        $product = new Comment();
-        $product->setCreatedAt(new \DateTimeImmutable());
+        $comment = new Comment();
+        $comment->setCreatedAt(new \DateTimeImmutable());
 
-        return $product;
+        return $comment;
     }
 }

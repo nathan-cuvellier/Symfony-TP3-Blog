@@ -1,0 +1,36 @@
+.container-post  {
+    display: flex;
+    flex-direction: row;
+
+    .post {
+        width: 75%;
+        margin-left: 50px;
+
+        .post-preview {
+            cursor: pointer;
+            margin: 0 30px;
+            padding: 5px 30px;
+            border: 1px dashed #CCCCCC;
+        }
+
+        .content-article {
+            margin-top: 40px;
+            text-align: justify;
+        }
+
+        .back a {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-size: 1.2em;
+        }
+    }
+
+    .info {
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 25%;
+        padding-left: 40px;
+    }
+}

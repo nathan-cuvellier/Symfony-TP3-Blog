@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box;
+  font-size: 16px;
+  outline: none;
+}
+
+html, body {
+  font-family: Inter, sans-serif;
+  word-break: break-word;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+footer {
+  overflow: hidden;
+}
+
+input[type=text] {
+  border: none;
+}
+
+p small {
+  font-size: 0.75em;
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  min-height: 300px;
+  background: #52ff00;
+  background: -moz-linear-gradient(90deg, #52ff00 0%, #41a4f9 16%, #53b1e0 25%, #aff261 40%, #1dabf0 55%, #55b3ca 65%, #e3ee26 78%, #f2c961 90%);
+  background: -webkit-linear-gradient(90deg, #52ff00 0%, #41a4f9 16%, #53b1e0 25%, #aff261 40%, #1dabf0 55%, #55b3ca 65%, #e3ee26 78%, #f2c961 90%);
+  background: linear-gradient(90deg, #52ff00 0%, #41a4f9 16%, #53b1e0 25%, #aff261 40%, #1dabf0 55%, #55b3ca 65%, #e3ee26 78%, #f2c961 90%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#52ff00",endColorstr="#f2c961",GradientType=1);
+}
+header h1 {
+  font-size: 3em;
+}
+
+.container-post {
+  display: flex;
+  flex-direction: row;
+}
+.container-post .post {
+  width: 75%;
+  margin-left: 50px;
+}
+.container-post .post .post-preview {
+  cursor: pointer;
+  margin: 0 30px;
+  padding: 5px 30px;
+  border: 1px dashed #CCCCCC;
+}
+.container-post .post .content-article {
+  margin-top: 40px;
+  text-align: justify;
+}
+.container-post .post .back a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.2em;
+}
+.container-post .info {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 25%;
+  padding-left: 40px;
+}
+
+/*# sourceMappingURL=app.css.map */

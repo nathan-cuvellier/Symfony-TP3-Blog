@@ -30,12 +30,12 @@ class PostCrudController extends AbstractCrudController
         ];
     }
 
-    public function createEntity(string $entityFqcn)
+    public function createEntity(string $entityFqcn): Post
     {
-        $product = new Post();
-        $product->setCreatedAt(new \DateTimeImmutable());
+        $post = new Post();
+        $post->setCreatedAt(new \DateTimeImmutable());
 
-        return $product;
+        return $post;
     }
 
 }

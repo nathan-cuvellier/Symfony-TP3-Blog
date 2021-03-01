@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ post.title }} - Article{% endblock %}
+
+{% block body %}
+    <div class="container-post">
+
+        <div class="post">
+            <p class="back"><a href="{{ path('posts') }}"><i class="fas fa-3x fa-angle-left"></i>&nbsp;&nbsp;&nbsp;All articles</a></p>
+            <article>
+                <h1>{{ post.title }}</h1>
+                <small>Published on {{ post.createdAt | date('F m Y') }} - {{ post.author.username }}</small>
+                <div class="content-article">{{ post.content | raw }}</div>
+            </article>
+
+        </div>
+        <div class="info">
+            {% include 'post/sidebar_user.html.twig' %}
+        </div>
+    </div>
+
+
+{% endblock %}

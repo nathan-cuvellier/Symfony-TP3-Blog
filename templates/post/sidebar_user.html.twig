@@ -1,0 +1,8 @@
+<h3>Top Articles</h3>
+
+{% for last_post in last_posts %}
+    <article>
+        <h5>{{ last_post.title }}</h5>
+        <small>{{ last_post.content | striptags | slice(0, 50) }}...</small>
+    </article>
+{% endfor %}

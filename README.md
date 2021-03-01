@@ -21,3 +21,9 @@ La connexion par défaut est configuré pour postgres, ici on utilise SQLite
 
 Les migrations sont très utiles pour pouvoir créer / mettre à jour la base de données que se soit en dev ou en prod
 Cela permet d'éviter d'appliquer manuellement les modifications de la base de données avec des instructions SQL.
+
+## Controller
+
+> Qu'est-ce que le ParamConverter ? À quoi sert le Doctrine Param Converter ?
+
+Le ParamConverter est une annotation, elle sert à convertir les paramètres (request) en objet
