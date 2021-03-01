@@ -6,6 +6,9 @@
 > Quelles relations existent entre les entités (Many To One/Many To Many/...) ?
 Faire un schéma de la base de données.
 
+![mcd](https://nathan-cuvellier.fr/img/mcd_tp3.png)
+
+
 > Expliquer ce qu'est le fichier .env
 
 Le fichier .env est lu et analysé à chaque requête et ses variables d'environnement sont ajoutées aux variables PHP `$_ENV` & `$_SERVER`. Les variables d'environnements existants ne sont jamais écrasées par les valeurs définies dans .env, vous pouvez donc combiner les deux.
