@@ -94,6 +94,9 @@ a {
   text-decoration: none;
   color: inherit;
 }
+a:hover {
+  text-decoration: none;
+}
 
 header {
   display: flex;
@@ -130,17 +133,25 @@ header h1 {
   text-align: justify;
 }
 .container-post .post .back a {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   align-items: center;
   font-size: 1.2em;
 }
+.container-post .post .comments {
+  margin-top: 2em;
+}
 .container-post .info {
+  width: 25%;
+  padding-left: 40px;
+}
+.container-post .info .sticky {
   position: sticky;
   top: 0;
   left: 0;
-  width: 25%;
-  padding-left: 40px;
+}
+.container-post .info .last_posts, .container-post .info .top_posts {
+  margin-left: 1.2em;
 }
 
 /*# sourceMappingURL=app.css.map */

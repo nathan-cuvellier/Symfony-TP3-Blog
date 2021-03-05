@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\CommentRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CommentRepository::class)
@@ -24,6 +26,7 @@ class Comment
     private $author;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="text")
      */
     private $content;
@@ -43,6 +46,11 @@ class Comment
      * @ORM\JoinColumn(nullable=false)
      */
     private $post;
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new DateTime());
+    }
 
     public function getId(): ?int
     {

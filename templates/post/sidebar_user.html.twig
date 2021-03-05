@@ -1,8 +1,24 @@
-<h3>Top Articles</h3>
+<div class="sticky">
+    <h3>Top Articles</h3>
+    <div class="last_posts">
+        {% for last_post in last_posts_user %}
+            <article>
+                <h5>{{ last_post.title }}</h5>
+                <small>{{ last_post.content | striptags | slice(0, 50) }}...</small>
+            </article>
+        {% endfor %}
+    </div>
 
-{% for last_post in last_posts %}
-    <article>
-        <h5>{{ last_post.title }}</h5>
-        <small>{{ last_post.content | striptags | slice(0, 50) }}...</small>
-    </article>
-{% endfor %}
+
+    <h3>Top Articles</h3>
+    <div class="top_posts">
+        {% for top_post in top_posts_user %}
+            <article>
+                <h5>{{ top_post.title }}</h5>
+                <small>{{ top_post.content | striptags | slice(0, 50) }}...</small>
+            </article>
+        {% endfor %}
+    </div>
+
+
+</div>

@@ -19,18 +19,29 @@
         }
 
         .back a {
-            display: flex;
+            display: inline-flex;
             flex-direction: row;
             align-items: center;
             font-size: 1.2em;
         }
+
+        .comments {
+            margin-top: 2em;
+        }
     }
 
-    .info {
-        position: sticky;
-        top: 0;
-        left: 0;
+    .info  {
         width: 25%;
         padding-left: 40px;
+
+        .sticky {
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
+
+        .last_posts, .top_posts {
+            margin-left: 1.2em;
+        }
     }
 }

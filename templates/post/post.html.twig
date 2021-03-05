@@ -6,13 +6,39 @@
     <div class="container-post">
 
         <div class="post">
-            <p class="back"><a href="{{ path('posts') }}"><i class="fas fa-3x fa-angle-left"></i>&nbsp;&nbsp;&nbsp;All articles</a></p>
+            <p class="back"><a href="{{ path('posts') }}"><i class="fas fa-3x fa-angle-left"></i>&nbsp;&nbsp;&nbsp;All
+                    articles</a></p>
             <article>
                 <h1>{{ post.title }}</h1>
                 <small>Published on {{ post.createdAt | date('F m Y') }} - {{ post.author.username }}</small>
                 <div class="content-article">{{ post.content | raw }}</div>
             </article>
 
+            {{ form_start(form) }}
+            {% if not form.vars.valid %}
+                <div class="bg-danger">
+                    Le formulaire contient une ou plusieurs erreurs<br><br>
+                    {{ form_errors(form) }}
+                </div>
+            {% endif %}
+
+            <hr>
+
+            {{ form_row(form._token) }}
+            {{ form_row(form.content) }}
+            <input type="submit" class="btn btn-primary" value="Send">
+            {{ form_end(form,  {'render_rest': false}) }}
+
+            <div class="comments">
+                <h3>Commentaires :</h3>
+                {% for comment in post.comments %}
+                    {% if not comment.isDeleted %}
+                    {{ comment.author }}
+                    {{ comment.content }}
+                    {% endif %}
+
+                {% endfor %}
+            </div>
         </div>
         <div class="info">
             {% include 'post/sidebar_user.html.twig' %}

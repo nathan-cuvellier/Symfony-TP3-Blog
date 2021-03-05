@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\AbstractQuery;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -19,11 +20,59 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
-    public function getLastPosts(int $maxResult)
+    public function test(int $post_id) {
+        return $this->createQueryBuilder('p')
+            ->select('p.id, p.title, p.isDeleted, p.isPublished, p.content')
+            ->leftJoin('p.author', 'a')
+            ->where('p.id = :id')
+            ->setParameter('id', $post_id)
+            ->getQuery()
+            ->getResult(AbstractQuery::HYDRATE_OBJECT);
+    }
+
+    /*
+    public function findWithoutComments(int $post_id) {
+        return $this->createQueryBuilder('p')
+            ->select('p.id, p.title, p.content, p.createdAt, p.isPublished, p.isDeleted')
+            ->where('p.id = :id')
+            ->setParameter('id', $post_id)
+            ->getQuery()
+            ->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT);
+    }*/
+
+    public function findLastPosts(int $maxResult = 5)
     {
         return $this->createQueryBuilder('p')
             ->select('p.title, p.content, count(c.id)')
             ->leftJoin('p.comments', 'c')
+            ->groupBy('p.title, p.content')
+            ->orderBy('count(c.id)', 'DESC')
+            ->setMaxResults($maxResult)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findLastPostsByUser(int $user_id, int $maxResult = 5)
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p.title, p.content')
+            ->join('p.author', 'a')
+            ->where('a.id = :user_id')
+            ->setParameter('user_id', $user_id)
+            ->orderBy('p.createdAt', 'DESC')
+            ->setMaxResults($maxResult)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findTopPostsByUser(int $user_id, int $maxResult = 5)
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p.title, p.content, count(c.id)')
+            ->leftJoin('p.comments', 'c')
+            ->join('p.author', 'a')
+            ->where('a.id = :user_id')
+            ->setParameter('user_id', $user_id)
             ->groupBy('p.title, p.content')
             ->orderBy('count(c.id)', 'DESC')
             ->setMaxResults($maxResult)
