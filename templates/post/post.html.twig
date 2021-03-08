@@ -31,6 +31,7 @@
 
             <div class="comments">
                 <h3>Commentaires :</h3>
+                {% if app.user %}
                 <div class="comments">
                     {% for comment in post.comments|filter(v => v.isDeleted == false) %}
                             <div class="my-3 ml-2">
@@ -41,6 +42,9 @@
                         <i>Soyez le premier à écrire un commentaire !</i>
                     {% endfor %}
                 </div>
+                {% else %}
+                    <i>Vous devez être connecté</i>
+                {% endif %}
 
             </div>
         </div>
