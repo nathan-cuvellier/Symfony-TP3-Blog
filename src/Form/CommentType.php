@@ -15,7 +15,6 @@ class CommentType extends AbstractType
             ->add('content', null, [
                 'label' => 'Comment'
             ])
-            ->add('createdAt')
             ->add('isDeleted')
             ->add('author')
             ->add('post')
