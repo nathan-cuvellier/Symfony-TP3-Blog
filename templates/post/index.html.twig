@@ -7,19 +7,15 @@
         <div class="post">
             <h1 class="d-inline-block">New Articles</h1>
             {% if app.user %}<a href="{{ path('post_add') }}"><i class="ml-2 fas fa-2x fa-plus-circle"></i></a>{% endif %}
-            {% for label, messages in app.flashes %}
-                {% for message in messages %}
-                    <div class="alert alert-{{ label }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endfor %}
+
             <div>
                 {% for post in posts %}
                     <article class="post-preview" onclick="location='{{ path('post_read', {post: post.id}) }}'">
                         <h3>{{ post.title }}</h3>
                         <p>{{ post.content | striptags | slice(0, 300) }}...</p>
                     </article>
+                {% else %}
+                    <i>Pas encore d'article...</i>
                 {% endfor %}
             </div>
 

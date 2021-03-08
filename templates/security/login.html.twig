@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Se connecter{% endblock %}
+
+
+{% block body %}
+    <div class="d-flex-center flex-column">
+        <h1>Connection</h1>
+        {% if error %}
+            <div class="text-center bg-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        {{ form_start(form) }}
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        {% if not form.vars.valid %}
+            <div class="bg-danger">
+                Le formulaire contient une ou plusieurs erreurs<br><br>
+                {{ form_errors(form) }}
+            </div>
+        {% endif %}
+
+        {% for field in form %} {# else the btn sumbit is in top of form #}
+            {{ form_row(field) }}
+        {% endfor %}
+        <input class="btn btn-primary w-100" type="submit" value="S'inscrire">
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

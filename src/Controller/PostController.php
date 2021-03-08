@@ -31,8 +31,8 @@ class PostController extends AbstractController
         $result = [];
         $isConnected = $this->isGranted('ROLE_USER');
         if($isConnected) {
-            $result['last_posts_user'] = $emPost->findLastPostsByUser(1);
-            $result['top_posts_user'] = $emPost->findTopPostsByUser(1);
+            $result['last_posts_user'] = $emPost->findLastPostsByUser($this->getUser()->getId());
+            $result['top_posts_user'] = $emPost->findTopPostsByUser($this->getUser()->getId());
         }
 
         $result['posts'] = $emPost->findAll();
@@ -55,7 +55,7 @@ class PostController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $post = $form->getData();
-            $post->setAuthor($this->entityManager->getRepository(User::class)->findAll()[0]);
+            $post->setAuthor($this->getUser());
 
             $this->entityManager->persist($post);
             $this->entityManager->flush();
@@ -66,8 +66,8 @@ class PostController extends AbstractController
 
         return $this->render('post/add.html.twig', [
             'form' => $form->createView(),
-            'last_posts_user' => $emPost->findLastPostsByUser(1),
-            'top_posts_user' => $emPost->findTopPostsByUser(1)
+            'last_posts_user' => $emPost->findLastPostsByUser($this->getUser()->getId()),
+            'top_posts_user' => $emPost->findTopPostsByUser($this->getUser()->getId())
         ]);
     }
 
@@ -99,8 +99,8 @@ class PostController extends AbstractController
         return $this->render('post/post.html.twig', [
             'form' => $form->createView(),
             'post' => $post,
-            'last_posts_user' => $emPost->findLastPosts(5),
-            'top_posts_user' => $emPost->findTopPostsByUser(1)
+            'last_posts_user' => $emPost->findLastPostsByUser($this->getUser()->getId()),
+            'top_posts_user' => $emPost->findTopPostsByUser($this->getUser()->getId())
         ]);
     }
 

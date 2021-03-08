@@ -1,0 +1,48 @@
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block title %}S'inscrire{% endblock %}#}
+
+
+{#{% block body %}#}
+{#    <div class="d-flex-center flex-column">#}
+{#        <h1>Register</h1>#}
+{#        {{ form_start(form) }}#}
+{#        {% if not form.vars.valid %}#}
+{#            <div class="bg-danger">#}
+{#                Le formulaire contient une ou plusieurs erreurs<br><br>#}
+{#                {{ form_errors(form) }}#}
+{#            </div>#}
+{#        {% endif %}#}
+
+{#        {% for field in form %} #}{# else the btn sumbit is in top of form #}
+{#            {{ form_row(field) }}#}
+{#        {% endfor %}#}
+{#        <input class="btn btn-primary w-100" type="submit" value="S'inscrire">#}
+{#        {{ form_end(form) }}#}
+{#    </div>#}
+{#{% endblock %}#}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+<div class="d-flex-center flex-column">
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <h1>Register</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.username) }}
+    {{ form_row(form.password) }}
+    {{ form_row(form.agreeTerms) }}
+
+    <button type="submit" class="btn btn-primary">Register</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
+
