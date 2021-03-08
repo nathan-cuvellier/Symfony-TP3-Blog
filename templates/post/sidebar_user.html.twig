@@ -5,7 +5,7 @@
         <div class="last_posts">
             {% for last_post in last_posts_user %}
                 <article>
-                    <h5>{{ last_post.title }}</h5>
+                    <h5 class="title">{{ last_post.title }}</h5>
                     <small>{{ last_post.content | striptags | slice(0, 50) }}...</small>
                 </article>
             {% else %}
@@ -18,7 +18,7 @@
         <div class="top_posts">
             {% for top_post in top_posts_user %}
                 <article>
-                    <h5>{{ top_post.title }}</h5>
+                    <h5 class="title">{{ top_post.title }}</h5>
                     <small>{{ top_post.content | striptags | slice(0, 50) }}...</small>
                 </article>
             {% else %}

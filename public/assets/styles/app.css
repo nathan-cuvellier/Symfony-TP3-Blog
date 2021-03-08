@@ -34,7 +34,7 @@ header h1 {
   flex-direction: row;
 }
 .container-post .post {
-  width: 75%;
+  width: calc(75% - 50px);
   margin-left: 50px;
 }
 .container-post .post .post-preview {
@@ -56,9 +56,12 @@ header h1 {
 .container-post .post .comments {
   margin-top: 2em;
 }
+.container-post .title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .container-post .info {
   width: 25%;
-  padding-left: 40px;
 }
 .container-post .info .sticky {
   position: sticky;

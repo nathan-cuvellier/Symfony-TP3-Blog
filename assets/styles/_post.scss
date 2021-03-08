@@ -3,7 +3,7 @@
     flex-direction: row;
 
     .post {
-        width: 75%;
+        width: calc(75% - 50px);
         margin-left: 50px;
 
         .post-preview {
@@ -30,9 +30,13 @@
         }
     }
 
+    .title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
     .info  {
         width: 25%;
-        padding-left: 40px;
 
         .sticky {
             position: sticky;
