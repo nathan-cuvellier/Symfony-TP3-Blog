@@ -23,10 +23,10 @@ footer {
   overflow: hidden;
 }
 
+/*
 input[type=text] {
-  border: none;
-}
-
+    border: none;
+}*/
 p small {
   font-size: 0.75em;
 }

@@ -6,7 +6,7 @@
     <div class="container-post">
 
         <div class="post">
-            <p class="back"><a href="{{ path('posts') }}"><i class="fas fa-3x fa-angle-left"></i>&nbsp;&nbsp;&nbsp;All
+            <p class="back"><a href="{{ path('post_index') }}"><i class="fas fa-3x fa-angle-left"></i>&nbsp;&nbsp;&nbsp;All
                     articles</a></p>
             <article>
                 <h1>{{ post.title }}</h1>
@@ -31,13 +31,17 @@
 
             <div class="comments">
                 <h3>Commentaires :</h3>
-                {% for comment in post.comments %}
-                    {% if not comment.isDeleted %}
-                    {{ comment.author }}
-                    {{ comment.content }}
-                    {% endif %}
+                <div class="comments">
+                    {% for comment in post.comments|filter(v => v.isDeleted == false) %}
+                            <div class="my-3 ml-2">
+                                <b class="d-block">{{ comment.author }} :</b>
+                                {{ comment.content }}
+                            </div>
+                    {% else %}
+                        <i>Soyez le premier à écrire un commentaire !</i>
+                    {% endfor %}
+                </div>
 
-                {% endfor %}
             </div>
         </div>
         <div class="info">

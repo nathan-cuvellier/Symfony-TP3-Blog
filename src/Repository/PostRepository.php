@@ -10,7 +10,7 @@ use Doctrine\Persistence\ManagerRegistry;
 /**
  * @method Post|null find($id, $lockMode = null, $lockVersion = null)
  * @method Post|null findOneBy(array $criteria, array $orderBy = null)
- * @method Post[]    findAll()
+ //* @method Post[]    findAll()
  * @method Post[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class PostRepository extends ServiceEntityRepository
@@ -20,14 +20,9 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
-    public function test(int $post_id) {
-        return $this->createQueryBuilder('p')
-            ->select('p.id, p.title, p.isDeleted, p.isPublished, p.content')
-            ->leftJoin('p.author', 'a')
-            ->where('p.id = :id')
-            ->setParameter('id', $post_id)
-            ->getQuery()
-            ->getResult(AbstractQuery::HYDRATE_OBJECT);
+    public function findAll(): array
+    {
+        return $this->findBy([], ['createdAt' => 'DESC']);
     }
 
     /*
@@ -40,7 +35,7 @@ class PostRepository extends ServiceEntityRepository
             ->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT);
     }*/
 
-    public function findLastPosts(int $maxResult = 5)
+    public function findLastPosts(int $maxResult = 5): array
     {
         return $this->createQueryBuilder('p')
             ->select('p.title, p.content, count(c.id)')
@@ -52,7 +47,7 @@ class PostRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function findLastPostsByUser(int $user_id, int $maxResult = 5)
+    public function findLastPostsByUser(int $user_id, int $maxResult = 5): array
     {
         return $this->createQueryBuilder('p')
             ->select('p.title, p.content')
@@ -65,7 +60,7 @@ class PostRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function findTopPostsByUser(int $user_id, int $maxResult = 5)
+    public function findTopPostsByUser(int $user_id, int $maxResult = 5): array
     {
         return $this->createQueryBuilder('p')
             ->select('p.title, p.content, count(c.id)')

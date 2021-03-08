@@ -1,5 +1,7 @@
-<div class="sticky">
-    <h3>Top Articles</h3>
+<div class="sticky mt-2">
+
+    {% if app.user %}
+    <h3>Derniers articles</h3>
     <div class="last_posts">
         {% for last_post in last_posts_user %}
             <article>
@@ -19,6 +21,11 @@
             </article>
         {% endfor %}
     </div>
+    {% else %}
+        <p class="mb-2">Vous n'êtes pas connecté</p>
+        <a href="" class="btn btn-outline-primary">Se connecter</a>
+        <a href="" class="btn btn-outline-primary">S'inscrire</a>
+    {% endif %}
 
 
 </div>

@@ -59,6 +59,8 @@ class Post
     {
         $this->comments = new ArrayCollection();
         $this->createdAt = new \DateTimeImmutable();
+        $this->isPublished = true;
+        $this->isDeleted = false;
     }
 
     public function getId(): ?int

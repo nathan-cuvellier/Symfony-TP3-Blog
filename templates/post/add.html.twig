@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Article{% endblock %}
+
+{% block body %}
+    <div class="container-post">
+        <div class="post">
+            <h1 class="d-inline-block">Nouvelle article</h1><a href="{{ path('post_add') }}"></a>
+            <div>
+                {{ form_start(form) }}
+                {% if not form.vars.valid %}
+                    <div class="bg-danger">
+                        Le formulaire contient une ou plusieurs erreurs<br><br>
+                        {{ form_errors(form) }}
+                    </div>
+                {% endif %}
+
+                {% for field in form  %} {# else the btn sumbit is in top of form #}
+                    {{ form_row(field) }}
+                {% endfor %}
+                <input class="btn btn-primary" type="submit" />
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+        <div class="info">
+            {% include 'post/sidebar_user.html.twig' %}
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+
+
