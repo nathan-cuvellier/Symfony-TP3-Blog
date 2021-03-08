@@ -44,6 +44,7 @@ class PostController extends AbstractController
     #[Route('add', name: 'add')]
     public function add(Request $request): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $emPost = $this->entityManager->getRepository(Post::class);
 
         $form = $this->createForm(PostType::class, new Post)
