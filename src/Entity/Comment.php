@@ -49,7 +49,7 @@ class Comment
 
     public function __construct()
     {
-        $this->setCreatedAt(new DateTime());
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
