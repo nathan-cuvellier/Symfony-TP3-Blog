@@ -2,6 +2,13 @@
 
 # TP3 - Blog avec Symfony
 
+## Getting stared
+
+> Quelles sont les fonctionnalités principales du Symfony CLI ?
+
+- Un serveur web local puissant
+- Un outil pour vérifier les vulnérabilités de sécurité
+
 ## Doctrine
 > Quelles relations existent entre les entités (Many To One/Many To Many/...) ?
 Faire un schéma de la base de données.
@@ -21,6 +28,18 @@ La connexion par défaut est configuré pour postgres, ici on utilise SQLite
 
 Les migrations sont très utiles pour pouvoir créer / mettre à jour la base de données que se soit en dev ou en prod
 Cela permet d'éviter d'appliquer manuellement les modifications de la base de données avec des instructions SQL.
+
+## Administration
+
+> Faire une recherche sur les différentes solutions disponibles pour l'administration dans Symfony
+
+- EasyAdmin
+- A la main
+- SONATA PROJECT
+
+> Travail préparatoire : Qu'est-ce que EasyAdmin ?
+
+EasyAdmin crée de superbes backends d'administration, il s'appuit sur le composant Security de Symfony
 
 ## Controller
 
