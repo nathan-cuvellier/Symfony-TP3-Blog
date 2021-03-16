@@ -29,8 +29,7 @@ class PostController extends AbstractController
         $emPost = $this->entityManager->getRepository(Post::class);
 
         $result = [];
-        $isConnected = $this->isGranted('ROLE_USER');
-        if($isConnected) {
+        if($this->getUser()) {
             $result['last_posts_user'] = $emPost->findLastPostsByUser($this->getUser()->getId());
             $result['top_posts_user'] = $emPost->findTopPostsByUser($this->getUser()->getId());
         }
@@ -44,7 +43,7 @@ class PostController extends AbstractController
     #[Route('add', name: 'add')]
     public function add(Request $request): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->isGranted('IS_AUTHENTICATED_FULLY');
         $emPost = $this->entityManager->getRepository(Post::class);
 
         $form = $this->createForm(PostType::class, new Post)
@@ -79,30 +78,37 @@ class PostController extends AbstractController
 
         $comment = (new Comment())
                 ->setPost($post)
-                ->setAuthor($this->entityManager->getRepository(User::class)->findAll()[0]);
+                ->setAuthor($this->getUser());
 
         $form = $this->createForm(CommentType::class, $comment)
             ->remove('createdAt')
             ->remove('author')
             ->remove('post');
 
-        $form->handleRequest($request);
+        if($this->getUser()) {
+            $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $comment = $form->getData();
+            if ($form->isSubmitted() && $form->isValid()) {
+                $comment = $form->getData();
 
-            $this->entityManager->persist($comment);
-            $this->entityManager->flush();
+                $this->entityManager->persist($comment);
+                $this->entityManager->flush();
 
-            return $this->redirectToRoute('post_read', ['post' => $post->getId()]);
+                return $this->redirectToRoute('post_read', ['post' => $post->getId()]);
+            }
         }
 
-        return $this->render('post/post.html.twig', [
+        $result = [
             'form' => $form->createView(),
-            'post' => $post,
-            'last_posts_user' => $emPost->findLastPostsByUser($this->getUser()->getId()),
-            'top_posts_user' => $emPost->findTopPostsByUser($this->getUser()->getId())
-        ]);
+            'post' => $post
+        ];
+
+        if($this->getUser()) {
+            $result['last_posts_user'] = $emPost->findLastPostsByUser($this->getUser()->getId());
+            $result['top_posts_user'] = $emPost->findTopPostsByUser($this->getUser()->getId());
+        }
+
+        return $this->render('post/post.html.twig', $result);
     }
 
 

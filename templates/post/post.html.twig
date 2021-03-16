@@ -25,15 +25,20 @@
             <hr>
 
             {{ form_row(form._token) }}
-            {{ form_row(form.content) }}
-            <input type="submit" class="btn btn-primary" value="Send">
+
+            {% if app.user %}
+                {{ form_row(form.content) }}
+                <input type="submit" class="btn btn-primary" value="Send">
+            {% else %}
+                {{ form_row(form.content, { 'attr' : {'disabled': 'disabled', 'placeholder': 'Vous devez être connecté pour écrire un commentaire'}} ) }}
+            {% endif %}
+
             {{ form_end(form,  {'render_rest': false}) }}
 
             <div class="comments">
                 <h3>Commentaires :</h3>
-                {% if app.user %}
                 <div class="comments">
-                    {% for comment in post.comments|filter(v => v.isDeleted == false) %}
+                    {% for comment in post.comments|filter(v => v.isDeleted == false) | reverse %}
                             <div class="my-3 ml-2">
                                 <b class="d-block">{{ comment.author }} :</b>
                                 {{ comment.content }}
@@ -42,9 +47,6 @@
                         <i>Soyez le premier à écrire un commentaire !</i>
                     {% endfor %}
                 </div>
-                {% else %}
-                    <i>Vous devez être connecté</i>
-                {% endif %}
 
             </div>
         </div>
