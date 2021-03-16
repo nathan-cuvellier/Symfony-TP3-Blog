@@ -72,7 +72,7 @@ Niveau sécurité, un token CSRF est inséré et vérifié de manière automatiq
 - Customisation du rendu HTML
 - Customisation "FormType"
 
-### Sécurité
+## Sécurité
 
 > Définir les termes suivants : Encoder, Provider, Firewall, Access Control, Role, Voter
 
@@ -106,7 +106,7 @@ Rendre le mot de passe un con préhensible pour nous pour améliorer la sécurit
 
 Rendez la tâche d'un attaquant très difficile pour connaitre le mot de passe original
 
-### Services
+## Services
 
 > À quoi sert un service dans Symfony ? <br />
 Avez-vous déjà utilisé des services dans ce projet ? Si oui, lesquels ?<br />
