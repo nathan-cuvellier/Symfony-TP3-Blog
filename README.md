@@ -41,8 +41,17 @@ Cela permet d'éviter d'appliquer manuellement les modifications de la base de d
 
 EasyAdmin crée de superbes backends d'administration, il s'appuit sur le composant Security de Symfony
 
+> Pourquoi doit-on implémenter des méthodes to string dans nos entités ?
+
+Lorsque l'on a une relation, symfony essaie d'afficher un object (Entity) s'il on ne met pas de __toString, ce qui n'est pas possible
+
+
 ## Controller
 
 > Qu'est-ce que le ParamConverter ? À quoi sert le Doctrine Param Converter ?
 
 Le ParamConverter est une annotation, elle sert à convertir les paramètres (request) en objet
+
+## Formulaires
+
+> Qu'est-ce qu'un formulaire Symfony ?
