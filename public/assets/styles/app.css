@@ -52,6 +52,7 @@ header h1 {
   flex-direction: row;
   align-items: center;
   font-size: 1.2em;
+  text-decoration: none;
 }
 .container-post .post .comments {
   margin-top: 2em;
