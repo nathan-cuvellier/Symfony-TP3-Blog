@@ -55,3 +55,63 @@ Le ParamConverter est une annotation, elle sert à convertir les paramètres (re
 ## Formulaires
 
 > Qu'est-ce qu'un formulaire Symfony ?
+
+Le formulaire de symfony est un outil puissant qui évite le code habituel rébarbatif
+
+> Quels avantages offrent l'usage d'un formulaire ?
+
+Un formulaire Symfony permet de générer les champs (côté front-end) très facilement avec les class css graces aux thèmes.
+
+Côté back-end, il permet en plus de générer des champs dynamiques, de renvoyer des erreurs en fonction des validations écrites via les entités ou directement dans les class types
+
+Niveau sécurité, un token CSRF est inséré et vérifié de manière automatique
+
+> Quelles sont les différentes personalisations de formulaire qui peuvent être faites dans Symfony ?
+
+- Customisation des validations
+- Customisation du rendu HTML
+- Customisation "FormType"
+
+### Sécurité
+
+> Définir les termes suivants : Encoder, Provider, Firewall, Access Control, Role, Voter
+
+**Encoder** : Option qui définit l'algorithme utilisé pour encoder le mot de passe des utilisateurs.
+
+**Provider** : 
+
+**Firewall** : Permet de rendre accessible des urls en fonction des roles
+
+**Access Control** : autoriser / refuser des liens à des ips / nom de domaines. Forcer le protocol HTTP / HTTPS
+
+**Role** : les rôles sont un tableau qui est stocké dans la base de données, et chaque utilisateur se voit toujours attribuer au moins un rôle: ROLE_USER
+
+**Voter** : Centraliser les permissions et les rendres réutilisables
+
+> Définir les termes suivants : Argon2i, Bcrypt, Plaintext, BasicHTTP
+
+**Argon2i** : algorithme de hash
+
+**Bcrypt** : algorithme de hash
+
+**Plaintext** : mot de passe en clair
+
+**BasicHTTP** : authentification par une popup du navigateur
+
+> Expliquer le principe de hachage.
+
+Rendre le mot de passe un con préhensible pour nous pour améliorer la sécurité
+
+> Expliquer le principe de hachage.
+
+Rendez la tâche d'un attaquant très difficile pour connaitre le mot de passe original
+
+### Services
+
+> À quoi sert un service dans Symfony ? <br />
+Avez-vous déjà utilisé des services dans ce projet ? Si oui, lesquels ?<br />
+Définir les termes suivant : Dependency Injection, Service, Autowiring, Container
+
+> À quoi sert un service dans Symfony ? <br />
+Avez-vous déjà utilisé des services dans ce projet ? Si oui, lesquels ?<br />
+Définir les termes suivant : Dependency Injection, Service, Autowiring, Container
