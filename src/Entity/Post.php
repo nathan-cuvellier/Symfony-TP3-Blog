@@ -112,7 +112,7 @@ class Post
         return $this;
     }
 
-    public function getIsPublished(): ?bool
+    public function IsPublished(): ?bool
     {
         return $this->isPublished;
     }
@@ -124,7 +124,7 @@ class Post
         return $this;
     }
 
-    public function getIsDeleted(): ?bool
+    public function IsDeleted(): ?bool
     {
         return $this->isDeleted;
     }

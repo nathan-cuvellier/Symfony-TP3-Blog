@@ -78,7 +78,7 @@ class PostController extends AbstractController
 
         $comment = (new Comment())
                 ->setPost($post)
-                ->setAuthor($this->getUser());
+                ->setAuthor(($this->getUser()));
 
         $form = $this->createForm(CommentType::class, $comment)
             ->remove('createdAt')
@@ -109,6 +109,39 @@ class PostController extends AbstractController
         }
 
         return $this->render('post/post.html.twig', $result);
+    }
+
+    #[Route('edit/{post}', name: 'edit')]
+    public function edit(Post $post, Request $request) {
+        $this->denyAccessUnlessGranted('edit', $post);
+
+        $emPost = $this->entityManager->getRepository(Post::class);
+
+        $form = $this->createForm(PostType::class, $post)
+            ->remove('isDeleted')
+            ->remove('isPublished')
+            ->remove('author');
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $post = $form->getData();
+
+            $this->entityManager->persist($post);
+            $this->entityManager->flush();
+
+
+            $this->addFlash('success', 'Article mise à jour');
+            return $this->redirectToRoute('post_read', ['post' => $post->getId()]);
+
+        }
+
+
+        return $this->render('post/edit.html.twig', [
+            'form' => $form->createView(),
+            'last_posts_user' => $emPost->findLastPostsByUser($this->getUser()->getId()),
+            'top_posts_user' => $emPost->findTopPostsByUser($this->getUser()->getId())
+        ]);
     }
 
 
