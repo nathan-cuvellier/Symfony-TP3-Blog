@@ -115,3 +115,11 @@ Définir les termes suivant : Dependency Injection, Service, Autowiring, Contain
 > À quoi sert un service dans Symfony ? <br />
 Avez-vous déjà utilisé des services dans ce projet ? Si oui, lesquels ?<br />
 Définir les termes suivant : Dependency Injection, Service, Autowiring, Container
+
+## Validator
+
+> À quoi sert le validateur ? <br />
+Dans quel contexte peut-on valider des données ?
+
+Il sert à valider les données
+On peut l'utiliser lors de la soumission d'un formulaire
