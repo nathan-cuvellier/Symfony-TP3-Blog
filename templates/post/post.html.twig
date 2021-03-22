@@ -9,6 +9,9 @@
             <p class="back"><a href="{{ path('post_index') }}"><i class="fas fa-3x fa-angle-left"></i>&nbsp;&nbsp;&nbsp;All
                     articles</a></p>
             <article>
+                {% if is_granted('edit', post) %}
+                    <a href="">Editer</a>
+                {% endif %}
                 <h1>{{ post.title }}</h1>
                 <small>Published on {{ post.createdAt | date('F m Y') }} - {{ post.author.username }}</small>
                 <div class="content-article">{{ post.content | raw }}</div>
