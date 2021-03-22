@@ -15,9 +15,7 @@
                     </div>
                 {% endif %}
 
-                {% for field in form  %} {# else the btn sumbit is in top of form #}
-                    {{ form_row(field) }}
-                {% endfor %}
+                {{ form_rest(form) }}
                 <input class="btn btn-primary" type="submit" />
                 {{ form_end(form) }}
             </div>
