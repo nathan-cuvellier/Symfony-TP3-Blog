@@ -10,7 +10,7 @@
                     articles</a></p>
             <article>
                 {% if is_granted('edit', post) %}
-                    <a href="">Editer</a>
+                    <a href="{{ path('post_edit', {post: post.id}) }}">Editer</a>
                 {% endif %}
                 <h1>{{ post.title }}</h1>
                 <small>Published on {{ post.createdAt | date('F m Y') }} - {{ post.author.username }}</small>
